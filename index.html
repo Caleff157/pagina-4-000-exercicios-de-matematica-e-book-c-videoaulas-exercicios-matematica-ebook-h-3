@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.000 Exercícios de Matemática - E-book Digital com Videoaulas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #5B3DF5;
+            --color-primary-dark: #4527C2;
+            --color-accent: #5B3DF5;
+            --color-bg: #FFFFFF;
+            --color-surface: #F5F3FE;
+            --color-text: #191233;
+            --color-text-muted: #574F78;
+            --radius: 16px;
+            --shadow-sm: 0 2px 8px rgba(91, 61, 245, 0.08);
+            --shadow-md: 0 4px 24px rgba(91, 61, 245, 0.12);
+            --font-display: 'Sora', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            background: var(--color-bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--color-text);
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.125rem;
+            line-height: 1.7;
+            color: var(--color-text-muted);
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 3rem 0;
+            }
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 36px;
+            font-family: var(--font-display);
+            font-size: 1.125rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--color-accent);
+            color: white;
+            box-shadow: 0 4px 16px rgba(91, 61, 245, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(91, 61, 245, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-surface);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--color-surface) 0%, white 100%);
+            padding: 6rem 0 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(91, 61, 245, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: white;
+            color: var(--color-primary);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .hero h1 {
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subheadline {
+            font-size: 1.25rem;
+            color: var(--color-text-muted);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 0 3rem;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        .price-tag {
+            display: inline-block;
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            margin: 1rem 0;
+        }
+
+        .price-small {
+            font-size: 1rem;
+            color: var(--color-text-muted);
+            font-weight: 500;
+        }
+
+        .pain-section {
+            background: white;
+            text-align: center;
+        }
+
+        .pain-list {
+            max-width: 700px;
+            margin: 2rem auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .pain-item {
+            background: var(--color-surface);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            font-size: 1.125rem;
+            color: var(--color-text);
+            border-left: 4px solid var(--color-primary);
+        }
+
+        .for-who-section {
+            background: var(--color-surface);
+        }
+
+        .for-who-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .for-who-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+        }
+
+        .for-who-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1.5rem;
+        }
+
+        .for-who-card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .for-who-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 1rem;
+            color: var(--color-text-muted);
+        }
+
+        .for-who-card li::before {
+            content: '✓';
+            color: var(--color-primary);
+            font-weight: 700;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .for-who-card.not-for li::before {
+            content: '✗';
+            color: #E63946;
+        }
+
+        .benefits-section {
+            background: white;
+            text-align: center;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-card {
+            background: var(--color-surface);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-text);
+        }
+
+        .benefit-card p {
+            font-size: 1rem;
+            color: var(--color-text-muted);
+        }
+
+        .stack-section {
+            background: var(--color-surface);
+        }
+
+        .stack-section-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stack-list {
+            margin-top: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .stack-item {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            text-align: left;
+        }
+
+        .stack-number {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            background: var(--color-surface);
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .stack-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stack-content p {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .stack-item {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        .objections-section {
+            background: white;
+        }
+
+        .objections-section-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .objections-list {
+            margin-top: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .objection-card {
+            background: var(--color-surface);
+            padding: 2rem;
+            border-radius: var(--radius);
+            text-align: left;
+            border-left: 4px solid var(--color-primary);
+        }
+
+        .objection-card h3 {
+            font-size: 1.25rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .objection-card p {
+            font-size: 1rem;
+            color: var(--color-text);
+            margin: 0;
+        }
+
+        .guarantee-section {
+            background: var(--color-surface);
+            text-align: center;
+        }
+
+        .guarantee-box {
+            max-width: 700px;
+            margin: 2rem auto 0;
+            background: white;
+            padding: 3rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            border: 3px solid var(--color-primary);
+        }
+
+        .guarantee-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .guarantee-box h3 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .guarantee-box p {
+            font-size: 1.125rem;
+            color: var(--color-text-muted);
+        }
+
+        .faq-section {
+            background: white;
+        }
+
+        .faq-section-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .faq-list {
+            margin-top: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .faq-item {
+            background: var(--color-surface);
+            padding: 2rem;
+            border-radius: var(--radius);
+            text-align: left;
+        }
+
+        .faq-item h3 {
+            font-size: 1.125rem;
+            color: var(--color-text);
+            margin-bottom: 0.75rem;
+        }
+
+        .faq-item p {
+            font-size: 1rem;
+            color: var(--color-text-muted);
+            margin: 0;
+        }
+
+        .cta-final-section {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-final-section h2 {
+            color: white;
+        }
+
+        .cta-final-section p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 1rem auto 2rem;
+        }
+
+        .cta-final-section .btn-primary {
+            background: white;
+            color: var(--color-primary);
+        }
+
+        .cta-final-section .btn-primary:hover {
+            background: var(--color-surface);
+            transform: translateY(-2px);
+        }
+
+        .microcopy {
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .mobile-cta-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 16px 24px;
+            box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            border-top: 2px solid var(--color-primary);
+        }
+
+        .mobile-cta-bar .btn {
+            width: 100%;
+            padding: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-cta-bar {
+                display: block;
+            }
+
+            body {
+                padding-bottom: 80px;
+            }
+        }
+
+        .icon-check {
+            color: var(--color-primary);
+        }
+
+        .icon-x {
+            color: #E63946;
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">📚 Material 100% Digital</div>
+                <h1>Domine Matemática com 4.000 Exercícios Resolvidos</h1>
+                <p class="hero-subheadline">E-book completo com gabarito e videoaulas para você conquistar a aprovação no ENEM, vestibular, concurso público ou simplesmente reforçar seus estudos. Acesso imediato após a compra.</p>
+                <div class="price-tag">
+                    R$ 19,90
+                    <span class="price-small">pagamento único</span>
+                </div>
+                <div class="hero-cta">
+                    <a href="https://go.hotmart.com/X107609255T?ap=6295" class="btn btn-primary" data-track="cta-principal">Comprar Agora</a>
+                    <a href="https://go.hotmart.com/X107609255T?dp=1" class="btn btn-secondary" data-track="cta-secundario">Quero Conhecer Mais o Produto</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pain-section">
+        <div class="container">
+            <h2>Você está cansado de…</h2>
+            <div class="pain-list">
+                <div class="pain-item">
+                    📉 Procurar exercícios de matemática espalhados na internet e nunca encontrar material organizado e completo
+                </div>
+                <div class="pain-item">
+                    😰 Sentir que não pratica o suficiente porque não tem onde treinar centenas de questões diferentes
+                </div>
+                <div class="pain-item">
+                    ⏰ Perder tempo montando sua própria apostila quando poderia estar estudando de verdade
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="for-who-section">
+        <div class="container">
+            <h2>Para quem é (e para quem NÃO é)</h2>
+            <div class="for-who-grid">
+                <div class="for-who-card">
+                    <h3><span class="icon-check">✓</span> Este material é PERFEITO para você se:</h3>
+                    <ul>
+                        <li>Está se preparando para ENEM, vestibular ou concurso público</li>
+                        <li>Precisa de reforço escolar em matemática</li>
+                        <li>Quer praticar com milhares de exercícios organizados</li>
+                        <li>Busca um material com gabarito completo para conferir seu desempenho</li>
+                        <li>Quer acesso a videoaulas que explicam os conteúdos</li>
+                        <li>Prefere estudar no seu ritmo, com acesso vitalício</li>
+                    </ul>
+                </div>
+                <div class="for-who-card not-for">
+                    <h3><span class="icon-x">✗</span> Este material NÃO é para você se:</h3>
+                    <ul>
+                        <li>Você procura apenas teoria sem prática de exercícios</li>
+                        <li>Quer um curso presencial com aulas ao vivo</li>
+                        <li>Não tem acesso básico a internet para baixar o material digital</li>
+                        <li>Procura material impresso físico (este é 100% digital)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits-section">
+        <div class="container">
+            <h2>O que você vai conseguir com este material</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>Prática Intensiva</h3>
+                    <p>Treine com 4.000 exercícios variados e fixe cada conceito de matemática na memória</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">✅</div>
+                    <h3>Gabarito Completo</h3>
+                    <p>Confira suas respostas imediatamente e identifique onde precisa melhorar</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎬</div>
+                    <h3>Videoaulas Incluídas</h3>
+                    <p>Assista explicações em vídeo dos principais tópicos para reforçar seu aprendizado</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📱</div>
+                    <h3>Acesso Imediato</h3>
+                    <p>Baixe o material assim que a compra for aprovada e comece a estudar agora mesmo</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Investimento Único</h3>
+                    <p>Pague apenas uma vez e tenha acesso vitalício, sem mensalidades</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📚</div>
+                    <h3>Material Completo</h3>
+                    <p>Serve para ENEM, vestibular, concursos, Encceja e reforço escolar</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stack-section">
+        <div class="container">
+            <div class="stack-section-inner">
+                <h2>Tudo o que está incluído no seu acesso</h2>
+                <div class="stack-list">
+                    <div class="stack-item">
+                        <div class="stack-number">01</div>
+                        <div class="stack-content">
+                            <h3>E-book com 4.000 Exercícios de Matemática</h3>
+                            <p>Milhares de questões organizadas por tópico, do básico ao avançado, cobrindo todo o conteúdo de matemática</p>
+                        </div>
+                    </div>
+                    <div class="stack-item">
+                        <div class="stack-number">02</div>
+                        <div class="stack-content">
+                            <h3>Gabarito Completo de Todos os Exercícios</h3>
+                            <p>Respostas de todas as 4.000 questões para você conferir seu desempenho e corrigir seus erros</p>
+                        </div>
+                    </div>
+                    <div class="stack-item">
+                        <div class="stack-number">03</div>
+                        <div class="stack-content">
+                            <h3>Videoaulas Explicativas</h3>
+                            <p>Acesso a videoaulas que reforçam os principais conceitos de matemática abordados nos exercícios</p>
+                        </div>
+                    </div>
+                    <div class="stack-item">
+                        <div class="stack-number">04</div>
+                        <div class="stack-content">
+                            <h3>Material Digital para Download</h3>
+                            <p>Baixe o e-book e estude offline no seu computador, tablet ou celular, onde e quando quiser</p>
+                        </div>
+                    </div>
+                    <div class="stack-item">
+                        <div class="stack-number">05</div>
+                        <div class="stack-content">
+                            <h3>Acesso Vitalício ao Conteúdo</h3>
+                            <p>Seu acesso não expira. Revise o material quantas vezes precisar, para sempre</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="objections-section">
+        <div class="container">
+            <div class="objections-section-inner">
+                <h2>Suas dúvidas respondidas</h2>
+                <div class="objections-list">
+                    <div class="objection-card">
+                        <h3>"Não tenho tempo para estudar 4.000 exercícios"</h3>
+                        <p>Você não precisa fazer todos de uma vez! O material é organizado por tópico para você estudar no seu ritmo. Faça 10, 50 ou 100 exercícios por dia — o acesso é vitalício e você monta o cronograma que funciona para sua rotina. O importante é ter um banco gigante de questões à disposição sempre que precisar praticar.</p>
+                    </div>
+                    <div class="objection-card">
+                        <h3>"Já comprei outros materiais e não resolveram meu problema"</h3>
+                        <p>A diferença aqui é quantidade e organização. Muitos materiais trazem poucas questões ou são desorganizados. Aqui você tem 4.000 exercícios estruturados com gabarito completo e videoaulas de apoio — é prática intensiva de verdade. Matemática se aprende fazendo, e este é o material que te dá volume para treinar até dominar cada assunto.</p>
+                    </div>
+                    <div class="objection-card">
+                        <h3>"Não sei se esse conteúdo é para o meu nível ou prova"</h3>
+                        <p>O material cobre desde o básico até conteúdos avançados, e serve para reforço escolar, ENEM, vestibular, concurso público e Encceja. São 4.000 exercícios justamente para atender diferentes necessidades. Você escolhe os tópicos que precisa praticar e foca neles. É flexível e se adapta ao seu objetivo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="guarantee-section">
+        <div class="container">
+            <h2>Compra 100% Segura e Protegida</h2>
+            <div class="guarantee-box">
+                <div class="guarantee-icon">🔒</div>
+                <h3>Garantia Hotmart de Compra Segura</h3>
+                <p>Sua compra é processada pela Hotmart, a maior plataforma de produtos digitais da América Latina, com ambiente seguro e criptografado. Seus dados estão protegidos e você recebe acesso imediato após a confirmação do pagamento.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-section-inner">
+                <h2>Perguntas Frequentes</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <h3>Como recebo o material após a compra?</h3>
+                        <p>Assim que o pagamento for confirmado, você recebe um e-mail da Hotmart com seu login e senha para acessar a área de membros e fazer o download do e-book e acessar as videoaulas. O acesso é imediato para pagamentos via cartão e Pix.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>O material é físico ou digital?</h3>
+                        <p>É 100% digital. Você recebe o e-book em PDF para baixar no seu dispositivo (computador, tablet, celular) e acessa as videoaulas online na plataforma. Não enviamos nada impresso pelos Correios.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Quais formas de pagamento são aceitas?</h3>
+                        <p>A Hotmart aceita cartão de crédito (parcelado), Pix, boleto bancário e outras formas de pagamento disponíveis na página de checkout. Você escolhe a melhor opção para você.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Por quanto tempo tenho acesso ao conteúdo?</h3>
+                        <p>Seu acesso é vitalício. Após a compra, você pode baixar o e-book e acessar as videoaulas quantas vezes quiser, para sempre, sem prazo de expiração.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Tenho suporte se tiver dúvidas?</h3>
+                        <p>Sim! Você pode entrar em contato diretamente pela plataforma Hotmart caso tenha qualquer dúvida sobre o acesso ao material ou questões técnicas. O suporte está disponível para ajudar você.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-final-section">
+        <div class="container">
+            <h2>Comece Agora Sua Jornada de Prática em Matemática</h2>
+            <p>Acesso liberado assim que a compra é confirmada. Baixe o material e comece a estudar hoje mesmo.</p>
+            <a href="https://go.hotmart.com/X107609255T?ap=6295" class="btn btn-primary" data-track="cta-principal">Quero Garantir Meu Acesso Agora</a>
+            <p class="microcopy">✓ Pagamento único de R$ 19,90 • ✓ Acesso imediato • ✓ Plataforma segura Hotmart</p>
+        </div>
+    </section>
+
+    <div class="mobile-cta-bar">
+        <a href="https://go.hotmart.com/X107609255T?ap=6295" class="btn btn-primary" data-track="cta-principal">Comprar Agora - R$ 19,90</a>
+    </div>
+</body>
+</html>
